@@ -35,6 +35,37 @@ const RECOMMENDATIONS = [
   }
 ];
 
+const LATEST_NEWS = [
+  {
+    id: 101,
+    title: "Startup Lokal Tembus Pasar Eropa dengan Solusi Energi Terbarukan",
+    image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=400&q=80",
+    category: "Bisnis",
+    time: "45 Menit Lalu"
+  },
+  {
+    id: 102,
+    title: "Update Keamanan Kritis: Segera Perbarui OS Smartphone Anda",
+    image: "https://images.unsplash.com/photo-1563203369-26f2e4a5ccf7?auto=format&fit=crop&w=400&q=80",
+    category: "Keamanan",
+    time: "2 Jam Lalu"
+  },
+  {
+    id: 103,
+    title: "Eksplorasi Mars: Robot Penjelajah Temukan Bukti Aliran Air Kuno",
+    image: "https://images.unsplash.com/photo-1614729939124-032f0b5609ce?auto=format&fit=crop&w=400&q=80",
+    category: "Sains",
+    time: "4 Jam Lalu"
+  },
+  {
+    id: 104,
+    title: "Mesin Quantum Pertama di Asia Tenggara Resmi Beroperasi",
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=400&q=80",
+    category: "Teknologi",
+    time: "6 Jam Lalu"
+  }
+];
+
 export function NewsDetail() {
   const { id } = useParams();
 
@@ -100,10 +131,10 @@ export function NewsDetail() {
       </header>
 
       {/* --- Article Body Section --- */}
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 py-16">
-        <div className="flex flex-col lg:flex-row gap-12 relative">
-          <aside className="lg:w-12">
-            <div className="sticky top-32 flex lg:flex-col gap-4 justify-center items-center">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 relative">
+          <aside className="lg:w-12 shrink-0">
+            <div className="sticky top-32 flex lg:flex-col gap-4 justify-center items-center mb-8 lg:mb-0">
               <button title="Salin Link" className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-accent-blue transition-all">
                 <LinkIcon className="w-4 h-4" />
               </button>
@@ -113,7 +144,7 @@ export function NewsDetail() {
             </div>
           </aside>
 
-          <div className="prose prose-invert prose-slate max-w-none flex-1
+          <div className="prose prose-invert prose-slate max-w-none flex-1 min-w-0
             prose-p:text-slate-300 prose-p:leading-[1.8] prose-p:text-[15px] sm:prose-p:text-[16px] prose-p:mb-6
             prose-blockquote:border-l-2 prose-blockquote:border-l-accent-blue prose-blockquote:bg-white/[0.03] prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-xl prose-blockquote:not-italic
           ">
@@ -153,6 +184,36 @@ export function NewsDetail() {
               </div>
             </div>
           </div>
+
+          {/* Sidebar Berita Terbaru */}
+          <aside className="w-full lg:w-[300px] xl:w-[340px] shrink-0 mt-12 lg:mt-0">
+            <div className="sticky top-32">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-1.5 h-5 bg-accent-blue rounded-full"></div>
+                  <h3 className="text-xl font-bold text-white tracking-tight">Berita Terbaru</h3>
+                </div>
+              </div>
+              
+              <div className="flex flex-col gap-5">
+                {LATEST_NEWS.map((news) => (
+                  <Link to={`/news/${news.id}`} key={news.id} className="group flex gap-4 p-3 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.04] transition-all">
+                    <div className="w-24 h-24 shrink-0 overflow-hidden rounded-xl bg-midnight-blue">
+                      <img src={news.image} alt={news.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    </div>
+                    <div className="flex flex-col py-0.5">
+                      <span className="text-accent-blue text-[9px] font-bold uppercase tracking-widest mb-1.5">{news.category}</span>
+                      <h4 className="text-white font-bold text-sm leading-[1.4] group-hover:text-accent-blue transition-colors line-clamp-3 mb-2">{news.title}</h4>
+                      <div className="flex items-center gap-1.5 text-slate-500 text-[9px] font-medium uppercase tracking-wider mt-auto">
+                        <Clock className="w-3 h-3" />
+                        <span>{news.time}</span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
 
