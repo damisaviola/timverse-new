@@ -9,7 +9,7 @@ export function Footer() {
           {/* Brand Info */}
           <div className="lg:col-span-4 space-y-6">
             <div className="text-3xl font-bold tracking-tighter text-white">
-              MIDNIGHT<span className="text-accent">.</span>
+              TIMVERSE<span className="text-accent">.</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
               Situs portal berita terkini, terpercaya, dan terupdate. Kami menyajikan informasi terbaru dari seluruh dunia langsung ke layar Anda dengan antarmuka yang modern dan nyaman.
@@ -72,7 +72,7 @@ export function Footer() {
             <ul className="space-y-4">
                <li className="flex items-start gap-4 text-sm text-slate-400">
                   <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                  <span>Gedung Midnight Cyber Lt. 15<br />Jl. Teknologi Maju No.45, Jakarta Selatan 12340</span>
+                  <span>Gedung Timverse Cyber Lt. 15<br />Jl. Teknologi Maju No.45, Jakarta Selatan 12340</span>
                </li>
                <li className="flex items-center gap-4 text-sm text-slate-400">
                   <Phone className="w-5 h-5 text-accent flex-shrink-0" />
@@ -80,7 +80,7 @@ export function Footer() {
                </li>
                <li className="flex items-center gap-4 text-sm text-slate-400">
                   <Mail className="w-5 h-5 text-accent flex-shrink-0" />
-                  <span>redaksi@midnightnews.com</span>
+                  <span>redaksi@timverse.com</span>
                </li>
             </ul>
           </div>
@@ -89,7 +89,7 @@ export function Footer() {
         {/* Bottom Line */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-slate-500 text-center md:text-left">
-            © {new Date().getFullYear()} Hak Cipta Dilindungi Oleh Midnight News Portal.
+            © {new Date().getFullYear()} Hak Cipta Dilindungi Oleh Timverse News Portal.
           </p>
           <div className="flex gap-4 text-xs text-slate-500">
              <a href="#" className="hover:text-accent transition-colors">Bantuan</a>

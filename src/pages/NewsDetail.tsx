@@ -149,7 +149,7 @@ export function NewsDetail() {
             prose-blockquote:border-l-2 prose-blockquote:border-l-accent-blue prose-blockquote:bg-white/[0.03] prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-xl prose-blockquote:not-italic
           ">
             <p className="text-white/90 font-medium text-[17px] sm:text-[18px] leading-relaxed mb-8">
-              Jakarta, Midnight News &mdash; Industri kecerdasan buatan baru saja terguncang usai peluncuran platform model bahasa generasi terbaru. Tidak sekadar memproses kata, sistem ini mengklaim mampu memahami penalaran multi-step setajam peneliti ilmiah profesional.
+              Jakarta, Timverse News &mdash; Industri kecerdasan buatan baru saja terguncang usai peluncuran platform model bahasa generasi terbaru. Tidak sekadar memproses kata, sistem ini mengklaim mampu memahami penalaran multi-step setajam peneliti ilmiah profesional.
             </p>
             <p>
               Dengan bermodalkan dataset terkurasi yang lebih minim bias serta optimisasi di level infrastruktur perangkat keras, efisiensi yang dicapai digadang-gadang 10 kali lipat lebih cepat daripada pendahulunya.
