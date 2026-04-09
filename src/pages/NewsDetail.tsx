@@ -144,7 +144,7 @@ export function NewsDetail() {
             </div>
           </aside>
 
-          <div className="prose prose-invert prose-slate max-w-none flex-1 min-w-0
+          <div className="prose prose-invert prose-slate max-w-none flex-1 min-w-0 break-words
             prose-p:text-slate-300 prose-p:leading-[1.8] prose-p:text-[15px] sm:prose-p:text-[16px] prose-p:mb-6
             prose-blockquote:border-l-2 prose-blockquote:border-l-accent-blue prose-blockquote:bg-white/[0.03] prose-blockquote:py-6 prose-blockquote:px-8 prose-blockquote:rounded-r-xl prose-blockquote:not-italic
           ">

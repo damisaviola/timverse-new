@@ -4,8 +4,9 @@ import { MainHeadline } from '../components/home/MainHeadline';
 import { LatestNewsList } from '../components/home/LatestNewsList';
 import { EditorsPicks } from '../components/home/EditorsPicks';
 import { NewsGrid } from '../components/home/NewsGrid';
-import { MultimediaSection } from '../components/home/MultimediaSection';
+import { NationalNewsSection } from '../components/home/NationalNewsSection';
 import { CategoryHighlight } from '../components/home/CategoryHighlight';
+import { PopularNewsSection } from '../components/home/PopularNewsSection';
 import { ExploreCategories } from '../components/home/ExploreCategories';
 
 export function Home() {
@@ -13,6 +14,10 @@ export function Home() {
     <main>
       <TrendingTicker />
       <MainHeadline />
+      
+      {/* Bagian Berita Populer (Trending) Pindah Ke Atas */}
+      <PopularNewsSection />
+
       <ExploreCategories />
       
       {/* Spesial Kategori Topik (Inovasi Teknologi) */}
@@ -32,8 +37,8 @@ export function Home() {
         </div>
       </div>
 
-      {/* Bagian Berita Video & Podcast (Dark Mode Focus) */}
-      <MultimediaSection />
+      {/* Bagian Berita Nasional (Menggantikan Opini) */}
+      <NationalNewsSection />
 
       {/* Rekomendasi Berita Tambahan di Bawah */}
       <NewsGrid />

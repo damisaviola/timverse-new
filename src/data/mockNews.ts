@@ -133,27 +133,30 @@ export const POPULAR_NEWS = [
   }
 ];
 
-export const MULTIMEDIA_NEWS = [
+export const NATIONAL_NEWS = [
   {
     id: 16,
-    category: 'Video',
-    title: 'Wawancara Eksklusif: Arah Kebijakan Ekonomi Terkini',
-    duration: '14:20',
-    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80',
+    category: 'Pemerintahan',
+    title: 'Kebijakan Baru Transportasi Publik Akan Segera Ditetapkan',
+    excerpt: 'Kementerian Perhubungan tengah memfinalisasi regulasi yang diharapkan mampu menekan angka kemacetan di kawasan aglomerasi.',
+    image: 'https://images.unsplash.com/photo-1541888009665-276ad4accd34?auto=format&fit=crop&w=800&q=80',
+    time: '1 jam lalu',
   },
   {
     id: 17,
-    category: 'Galeri',
-    title: 'Potret Kemeriahan Parade Budaya Tahunan di Ibu Kota',
-    duration: '12 Foto',
-    image: 'https://images.unsplash.com/photo-1533174000222-ec9886d3cb90?auto=format&fit=crop&w=800&q=80',
+    category: 'Nasional',
+    title: 'Pembangunan Tol Lintas Provinsi Ditargetkan Rampung Akhir Tahun',
+    excerpt: 'Infrastruktur jalur darat ini diharapkan bisa memangkas waktu tempuh distribusi logistik antar daerah secara signifikan.',
+    image: 'https://images.unsplash.com/photo-1545124119-75a74ef0ed3c?auto=format&fit=crop&w=800&q=80',
+    time: '2 jam lalu',
   },
   {
     id: 18,
-    category: 'Podcast',
-    title: 'Bincang Santai: Tips Memulai Karir di Industri Kreatif',
-    duration: '45 Mns',
-    image: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=800&q=80',
+    category: 'Sosial',
+    title: 'Program Bantuan Subsidi Tepat Sasaran Mulai Didistribusikan',
+    excerpt: 'Pemerintah memastikan verifikasi data penerima berlangsung transparan menggunakan pangkalan data kependudukan terbaru.',
+    image: 'https://images.unsplash.com/photo-1593113565694-c6f8716c5654?auto=format&fit=crop&w=800&q=80',
+    time: '4 jam lalu',
   }
 ];
 
