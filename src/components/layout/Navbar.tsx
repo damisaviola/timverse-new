@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useDeferredValue } from 'react';
 import { Menu, Search, X, Clock } from 'lucide-react';
 import { LATEST_NEWS, POPULAR_NEWS, TECH_NEWS, MAIN_HEADLINE, SIDE_STORIES } from '../../data/mockNews';
 
@@ -11,19 +11,22 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // Menghindari lag saat mengetik dengan menunda update pencarian
+  const deferredSearchQuery = useDeferredValue(searchQuery);
 
   const menus = ['Berita Utama', 'Teknologi', 'Olahraga', 'Ekonomi', 'Gaya Hidup', 'Otomotif'];
 
   // Fungsi pencarian ringan (hanya run jika query berubah)
   const searchResults = useMemo(() => {
-    if (!searchQuery.trim()) return [];
-    const query = searchQuery.toLowerCase();
+    if (!deferredSearchQuery.trim()) return [];
+    const query = deferredSearchQuery.toLowerCase();
     return ALL_NEWS.filter(news => 
       news.title?.toLowerCase().includes(query) || 
       news.category?.toLowerCase().includes(query) ||
       (news as any).author?.toLowerCase().includes(query)
     ).slice(0, 10); // Batasi hasil pencarian agar tetap ringan
-  }, [searchQuery]);
+  }, [deferredSearchQuery]);
 
   // Lock body scroll saat overlay terbuka
   useEffect(() => {
@@ -138,7 +141,7 @@ export function Navbar() {
 
       {/* Lightweight Fullscreen Search Overlay */}
       {isSearchOpen && (
-        <div className="fixed inset-0 z-[100] bg-midnight-blue/95 backdrop-blur-xl animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-[100] bg-midnight-blue/95 backdrop-blur-md animate-in fade-in duration-200">
           <div className="max-w-4xl mx-auto w-full h-full flex flex-col pt-4 sm:pt-10 px-4 sm:px-6">
             
             {/* Search Header Area */}
@@ -161,7 +164,7 @@ export function Navbar() {
             </div>
 
             {/* Results Area (Scrollable) */}
-            <div className="flex-1 overflow-y-auto py-6 sm:py-10 custom-scrollbar">
+            <div className="flex-1 overflow-y-auto py-6 sm:py-10 custom-scrollbar overscroll-contain transform-gpu">
               {searchResults.length > 0 ? (
                 <div className="flex flex-col gap-4 sm:gap-6">
                   <span className="text-slate-400 text-xs font-bold uppercase tracking-widest mb-2 sm:mb-4 px-2">
