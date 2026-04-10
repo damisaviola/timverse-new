@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useDeferredValue } from 'react';
-import { Menu, Search, X, Clock } from 'lucide-react';
+import { Menu, Search, X, Clock, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LATEST_NEWS, POPULAR_NEWS, TECH_NEWS, MAIN_HEADLINE, SIDE_STORIES } from '../../data/mockNews';
 
@@ -17,11 +17,12 @@ export function Navbar() {
 
   const menus = [
     { name: 'Berita Utama', path: '/' },
+    { name: 'Nasional', path: '/' },
     { name: 'Teknologi', path: '/' },
     { name: 'Olahraga', path: '/' },
     { name: 'Ekonomi', path: '/' },
     { name: 'Gaya Hidup', path: '/' },
-    { name: 'Otomotif', path: '/' },
+    { name: 'Politik', path: '/' },
     { name: 'Kontribusi', path: '/kontribusi' }
   ];
 
@@ -67,13 +68,30 @@ export function Navbar() {
             </div>
             
             {/* Center: Desktop Menus */}
-            <div className="hidden lg:flex items-center space-x-8">
-              {menus.map((item) => (
-                <Link key={item.name} to={item.path} className="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors relative group">
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-blue transition-all group-hover:w-full"></span>
-                </Link>
-              ))}
+            <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+              <Link to="/" className="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors relative group py-6">
+                Berita Utama
+                <span className="absolute bottom-4 left-0 w-0 h-0.5 bg-accent-blue transition-all group-hover:w-full"></span>
+              </Link>
+              
+              <div className="relative group py-6">
+                <button className="flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors relative">
+                   Topik <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                   <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-accent-blue transition-all group-hover:w-full"></span>
+                </button>
+                <div className="absolute top-[68px] -left-4 w-48 bg-deep-blue/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden flex flex-col py-2">
+                   {menus.filter(m => m.name !== 'Kontribusi' && m.name !== 'Berita Utama').map((item) => (
+                      <Link key={item.name} to={item.path} className="px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-slate-300 hover:text-white hover:bg-white/5 transition-colors">
+                        {item.name}
+                      </Link>
+                   ))}
+                </div>
+              </div>
+
+              <Link to="/kontribusi" className="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors relative group py-6">
+                Kontribusi
+                <span className="absolute bottom-4 left-0 w-0 h-0.5 bg-accent-blue transition-all group-hover:w-full"></span>
+              </Link>
             </div>
 
             {/* Right: Actions */}

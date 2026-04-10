@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Trophy, TrendingUp, Coffee, Film, FlaskConical, Globe, Car, ArrowRight } from 'lucide-react';
+import { Cpu, Trophy, TrendingUp, Coffee, Film, FlaskConical, Flag, Landmark, ArrowRight } from 'lucide-react';
 
 const CATEGORIES = [
   { name: 'Teknologi', icon: Cpu, color: 'text-blue-400', bg: 'bg-blue-400/10' },
@@ -8,8 +8,8 @@ const CATEGORIES = [
   { name: 'Gaya Hidup', icon: Coffee, color: 'text-orange-400', bg: 'bg-orange-400/10' },
   { name: 'Hiburan', icon: Film, color: 'text-purple-400', bg: 'bg-purple-400/10' },
   { name: 'Sains', icon: FlaskConical, color: 'text-cyan-400', bg: 'bg-cyan-400/10' },
-  { name: 'Internasional', icon: Globe, color: 'text-indigo-400', bg: 'bg-indigo-400/10' },
-  { name: 'Otomotif', icon: Car, color: 'text-red-400', bg: 'bg-red-400/10' },
+  { name: 'Nasional', icon: Flag, color: 'text-indigo-400', bg: 'bg-indigo-400/10' },
+  { name: 'Politik', icon: Landmark, color: 'text-red-400', bg: 'bg-red-400/10' },
 ];
 
 export function ExploreCategories() {
