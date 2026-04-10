@@ -56,6 +56,12 @@ export const EDITORS_PICKS = [
     category: 'Budaya',
     title: 'Festival Seni Kontemporer Hadir dengan Format Realitas Virtual',
     time: '2 hari lalu'
+  },
+  {
+    id: 27,
+    category: 'Pendidikan',
+    title: 'Kecerdasan Buatan Mulai Diadopsi untuk Kurikulum Jarak Jauh',
+    time: '3 hari lalu'
   }
 ];
 
@@ -188,5 +194,40 @@ export const TECH_NEWS = [
     title: 'Platform Edukasi Ini Raih Pendanaan Seri B',
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80',
     time: '6 jam lalu',
+  }
+];
+
+export const SPORTS_NEWS = [
+  {
+    id: 23,
+    category: 'Sepak Bola',
+    title: 'Kejutan di Partai Final: Tim Underdog Kalahkan Juara Bertahan',
+    excerpt: 'Kemenangan dramatis ini mencetak sejarah baru dalam kancah turnamen internasional tahunan.',
+    image: 'https://images.unsplash.com/photo-1518605368461-1ee7c41ebfcb?auto=format&fit=crop&w=800&q=80',
+    time: '1 jam lalu',
+  },
+  {
+    id: 24,
+    category: 'Bulu Tangkis',
+    title: 'Pasangan Ganda Putra Amankan Tiket Menuju Olimpiade',
+    excerpt: 'Peringkat dunia mereka naik drastis usai menjuarai kejuaraan terbuka di Eropa.',
+    image: 'https://images.unsplash.com/photo-1622279457486-640c4cb71c13?auto=format&fit=crop&w=800&q=80',
+    time: '2 jam lalu',
+  },
+  {
+    id: 25,
+    category: 'Bola Basket',
+    title: 'Bintang Baru Bersinar di Laga Debut NBA',
+    excerpt: 'Pemain muda berusia 19 tahun ini langsung mencatatkan triple-double dalam pertandingan perdananya.',
+    image: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80',
+    time: '3 jam lalu',
+  },
+  {
+    id: 26,
+    category: 'Balap Motor',
+    title: 'Sirkuit Lokal Bersiap Jadi Tuan Rumah Kejuaraan Dunia Lagi',
+    excerpt: 'Pemerintah daerah mengucurkan dana talangan untuk memoles aspal lintasan sesuai standar FIM terbaru.',
+    image: 'https://images.unsplash.com/photo-1557008069-b1eb2179bbed?auto=format&fit=crop&w=800&q=80',
+    time: '5 jam lalu',
   }
 ];

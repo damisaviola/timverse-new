@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect, useDeferredValue } from 'react';
 import { Menu, Search, X, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { LATEST_NEWS, POPULAR_NEWS, TECH_NEWS, MAIN_HEADLINE, SIDE_STORIES } from '../../data/mockNews';
 
 // Menggabungkan semua dummy data untuk pencarian yang ringan di sisi client
@@ -12,12 +13,18 @@ export function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   
-  // Menghindari lag saat mengetik dengan menunda update pencarian
   const deferredSearchQuery = useDeferredValue(searchQuery);
 
-  const menus = ['Berita Utama', 'Teknologi', 'Olahraga', 'Ekonomi', 'Gaya Hidup', 'Otomotif'];
+  const menus = [
+    { name: 'Berita Utama', path: '/' },
+    { name: 'Teknologi', path: '/' },
+    { name: 'Olahraga', path: '/' },
+    { name: 'Ekonomi', path: '/' },
+    { name: 'Gaya Hidup', path: '/' },
+    { name: 'Otomotif', path: '/' },
+    { name: 'Kontribusi', path: '/kontribusi' }
+  ];
 
-  // Fungsi pencarian ringan (hanya run jika query berubah)
   const searchResults = useMemo(() => {
     if (!deferredSearchQuery.trim()) return [];
     const query = deferredSearchQuery.toLowerCase();
@@ -25,10 +32,9 @@ export function Navbar() {
       news.title?.toLowerCase().includes(query) || 
       news.category?.toLowerCase().includes(query) ||
       (news as any).author?.toLowerCase().includes(query)
-    ).slice(0, 10); // Batasi hasil pencarian agar tetap ringan
+    ).slice(0, 10); 
   }, [deferredSearchQuery]);
 
-  // Lock body scroll saat overlay terbuka
   useEffect(() => {
     if (isSearchOpen || isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -63,10 +69,10 @@ export function Navbar() {
             {/* Center: Desktop Menus */}
             <div className="hidden lg:flex items-center space-x-8">
               {menus.map((item) => (
-                <a key={item} href="#" className="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors relative group">
-                  {item}
+                <Link key={item.name} to={item.path} className="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-colors relative group">
+                  {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-blue transition-all group-hover:w-full"></span>
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -129,10 +135,10 @@ export function Navbar() {
             <div className="flex flex-col gap-2">
               <span className="text-slate-500 text-[10px] font-bold uppercase tracking-widest pl-2 mb-2">Kategori</span>
               {menus.map((item) => (
-                <a key={item} href="#" className="text-base font-bold text-slate-300 hover:text-white hover:bg-white/5 px-2 py-3 rounded-xl transition-all flex items-center justify-between group">
-                  {item}
+                <Link key={item.name} to={item.path} onClick={() => setIsMobileMenuOpen(false)} className="text-base font-bold text-slate-300 hover:text-white hover:bg-white/5 px-2 py-3 rounded-xl transition-all flex items-center justify-between group">
+                  {item.name}
                   <span className="w-6 h-px bg-white/10 group-hover:bg-accent-blue group-hover:w-8 transition-all"></span>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

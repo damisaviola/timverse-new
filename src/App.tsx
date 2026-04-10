@@ -4,6 +4,7 @@ import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
 import { NewsDetail } from './pages/NewsDetail';
+import { Contribute } from './pages/Contribute';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/news/:id" element={<NewsDetail />} />
+          <Route path="/kontribusi" element={<Contribute />} />
         </Routes>
         <Footer />
       </div>

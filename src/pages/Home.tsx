@@ -7,6 +7,7 @@ import { NewsGrid } from '../components/home/NewsGrid';
 import { NationalNewsSection } from '../components/home/NationalNewsSection';
 import { CategoryHighlight } from '../components/home/CategoryHighlight';
 import { PopularNewsSection } from '../components/home/PopularNewsSection';
+import { SportsSection } from '../components/home/SportsSection';
 import { ExploreCategories } from '../components/home/ExploreCategories';
 
 export function Home() {
@@ -39,6 +40,9 @@ export function Home() {
 
       {/* Bagian Berita Nasional (Menggantikan Opini) */}
       <NationalNewsSection />
+
+      {/* Bagian Olahraga Khusus */}
+      <SportsSection />
 
       {/* Rekomendasi Berita Tambahan di Bawah */}
       <NewsGrid />

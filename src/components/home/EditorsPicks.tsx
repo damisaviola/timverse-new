@@ -29,14 +29,6 @@ export function EditorsPicks() {
         ))}
       </div>
       
-      <div className="mt-8 bg-gradient-to-br from-light-blue to-midnight-blue p-5 rounded-xl border border-white/5">
-         <h4 className="font-bold text-white mb-2">Berlangganan Newsletter</h4>
-         <p className="text-xs text-slate-400 mb-4">Dapatkan update berita pilihan langsung ke inbox Anda.</p>
-         <div className="flex">
-           <input type="email" placeholder="Email Anda" className="w-full bg-midnight-blue text-white text-sm px-3 py-2 rounded-l-lg focus:outline-none" />
-           <button className="bg-accent text-midnight-blue px-3 py-2 text-sm font-bold rounded-r-lg">Kirim</button>
-         </div>
-      </div>
     </div>
   );
 }
