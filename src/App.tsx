@@ -5,10 +5,12 @@ import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
 import { NewsDetail } from './pages/NewsDetail';
 import { Contribute } from './pages/Contribute';
+import { ScrollToTop } from './components/layout/ScrollToTop';
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen bg-midnight-blue selection:bg-accent selection:text-midnight-blue font-sans">
         <Navbar />
         <Routes>

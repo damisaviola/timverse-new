@@ -7,7 +7,7 @@ export function Contribute() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-midnight-darker pt-24 pb-16 px-4 md:px-8 text-slate-300 selection:bg-accent-blue/30 overflow-x-hidden relative">
+    <div className="min-h-screen bg-midnight-darker pt-32 lg:pt-40 pb-16 px-4 md:px-8 text-slate-300 selection:bg-accent-blue/30 overflow-x-hidden relative">
       <div className="max-w-4xl mx-auto z-10 relative">
         <div className="text-center mb-16">
            <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-accent-blue shadow-2xl">

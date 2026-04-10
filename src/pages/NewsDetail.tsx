@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   ArrowLeft, 
@@ -8,7 +8,11 @@ import {
   Share2, 
   ChevronRight, 
   ExternalLink, 
-  Info
+  Info,
+  Volume2,
+  VolumeX,
+  Minus,
+  Plus
 } from 'lucide-react';
 
 const RECOMMENDATIONS = [
@@ -68,10 +72,40 @@ const LATEST_NEWS = [
 
 export function NewsDetail() {
   const { id } = useParams();
+  
+  const [fontSize, setFontSize] = useState(16);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
+
+  useEffect(() => {
+    // Cleanup speech synthesis on unmount to avoid ghost reading
+    return () => {
+      window.speechSynthesis.cancel();
+    };
+  }, []);
+
+  const toggleAudio = () => {
+    if (isPlaying) {
+      window.speechSynthesis.cancel();
+      setIsPlaying(false);
+    } else {
+      const textToRead = contentRef.current?.innerText || "";
+      const utterance = new SpeechSynthesisUtterance(textToRead);
+      utterance.lang = 'id-ID'; // Set language to Indonesian
+      utterance.rate = 0.95; // Slightly slower for better pacing
+      
+      utterance.onend = () => setIsPlaying(false);
+      utterance.onerror = () => setIsPlaying(false);
+      
+      window.speechSynthesis.cancel(); // Stop any pending speech
+      window.speechSynthesis.speak(utterance);
+      setIsPlaying(true);
+    }
+  };
 
   return (
     <article className="min-h-screen bg-midnight-darker pb-20 overflow-x-hidden selection:bg-accent-blue/30 text-slate-300">
@@ -139,11 +173,37 @@ export function NewsDetail() {
         <div className="flex flex-col lg:flex-row gap-10">
           
           {/* Main Content */}
-          <div className="flex-1 lg:max-w-3xl prose prose-invert prose-slate max-w-none break-words
-            prose-p:text-slate-300 prose-p:leading-[1.8] prose-p:text-[16px] sm:prose-p:text-[17px] prose-p:mb-6
-            prose-h2:text-2xl prose-h2:font-bold prose-h2:text-white prose-h2:mt-10 prose-h2:mb-4
-          ">
-            <p className="text-white/90 font-medium text-[17px] sm:text-[19px] leading-relaxed mb-8">
+          <div className="flex-1 lg:max-w-3xl">
+            
+            {/* Accessibility Tool Bar */}
+            <div className="flex items-center flex-wrap gap-4 mb-8 py-3 border-b border-white/5">
+              <button 
+                onClick={toggleAudio} 
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-lg ${isPlaying ? 'bg-accent-blue text-midnight-darker shadow-accent-blue/20' : 'bg-white/5 text-white hover:bg-white/10 border border-white/5'}`}
+              >
+                {isPlaying ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                {isPlaying ? 'Hentikan Audio' : 'Dengarkan Artikel'}
+              </button>
+              
+              <div className="flex items-center gap-1 bg-white/5 border border-white/5 rounded-xl px-2 py-1.5 sm:ml-auto">
+                <button onClick={() => setFontSize(f => Math.max(12, f - 2))} className="p-1.5 text-slate-400 hover:text-white transition-colors" title="Perkecil Teks">
+                  <Minus className="w-4 h-4" />
+                </button>
+                <div className="px-3 text-slate-300 font-bold text-xs uppercase tracking-widest">Ukuran {fontSize}px</div>
+                <button onClick={() => setFontSize(f => Math.min(28, f + 2))} className="p-1.5 text-slate-400 hover:text-white transition-colors" title="Perbesar Teks">
+                  <Plus className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            <div 
+              ref={contentRef}
+              className="prose prose-invert prose-slate max-w-none break-words
+                prose-p:text-slate-300 prose-p:leading-[1.8] prose-p:mb-6
+                prose-h2:font-bold prose-h2:text-white prose-h2:mt-10 prose-h2:mb-4 transition-all duration-300"
+              style={{ fontSize: `${fontSize}px` }}
+            >
+            <p className="text-white/90 font-medium leading-relaxed mb-8" style={{ fontSize: '1.1em' }}>
               Jakarta, Timverse News &mdash; Industri kecerdasan buatan baru saja terguncang usai peluncuran platform model bahasa generasi terbaru. Tidak sekadar memproses kata, sistem ini mengklaim mampu memahami penalaran multi-step setajam peneliti ilmiah profesional.
             </p>
             
@@ -178,8 +238,9 @@ export function NewsDetail() {
               </ul>
             </div>
           </div>
+        </div>
 
-          {/* Sidebar */}
+        {/* Sidebar */}
           <aside className="w-full lg:w-[320px] shrink-0 mt-8 lg:mt-0">
             <div className="lg:sticky lg:top-[90px]">
               <div className="flex items-center gap-3 mb-6">
